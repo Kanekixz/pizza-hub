@@ -17,7 +17,7 @@
             Nome: <input type="text" name="pizza.name" required/>
             Sabor: <input type="text" name="pizza.flavor" required/>
             Ingredientes: <input type="text" name="pizza.ingredients" required/>
-            Preço: <inpu type="number" name="pizza.price" required/>
+            Preço: <input type="number" name="pizza.price" required/>
             <button type="subimit">Salvar</button>
         </form>
     </body>

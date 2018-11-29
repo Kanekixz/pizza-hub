@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.edu.fjn</groupId>
-    <artifactId>pizzahub</artifactId>
+    <artifactId>pizza-hub-v2</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>pizzahub</name>
+    <name>pizza-hub-v2</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -29,6 +29,16 @@
             <groupId>com.google.code.maven-play-plugin.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>1.8.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-cdi</artifactId>
+            <version>6.0.10.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.10.Final</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
