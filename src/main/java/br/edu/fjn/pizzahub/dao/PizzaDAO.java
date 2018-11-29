@@ -123,8 +123,7 @@ public class PizzaDAO {
         Pizza pizza = findById(id);
 
         try {
-
-            em.remove(pizza);
+            em.remove(em.getReference(Pizza.class, pizza.getId()));
             em.getTransaction().commit();
         } catch (Exception e) {
 

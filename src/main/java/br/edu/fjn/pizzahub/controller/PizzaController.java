@@ -26,8 +26,23 @@ public class PizzaController {
     @Inject
     private Result result;
     
-    @Get("new")
-    public void pizzaFormView() {
+    @Get("")
+    public void pizzaView() {
+        
+    }
+    
+    @Get("adicionar")
+    public void pizzaSaveView() {
+        
+    }
+    
+    @Get("remover")
+    public void pizzaRemoveView(){
+        
+    }
+    
+    @Get("atualizar")
+    public void pizzaUpdateView(){
         
     }
     
@@ -35,7 +50,21 @@ public class PizzaController {
     public void save(Pizza pizza) throws OrmException{
         PizzaDAO pizzaDAO = new PizzaDAO();
         pizzaDAO.save(pizza);
-        result.redirectTo(this).pizzaFormView();
+        result.redirectTo(this).pizzaView();
         
+    }
+    
+    @Post("remove")
+    public void remove(Pizza pizza) throws OrmException{
+       PizzaDAO pizzaDAO = new PizzaDAO();
+       pizzaDAO.remove(pizza.getId());
+       result.redirectTo(this).pizzaView();
+    }
+    
+    @Post("update")
+    public void update(Pizza pizza) throws OrmException{
+       PizzaDAO pizzaDAO = new PizzaDAO();
+       pizzaDAO.update(pizza);
+       result.redirectTo(this).pizzaView();
     }
 }
