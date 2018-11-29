@@ -15,7 +15,7 @@
         <div>
             <h1>Remover Pizza</h1>
             <form action="${pageContext.request.contextPath}/pizza/remove" method="post">
-                ID <input type="number" name="pizza.id" required/>
+                ID <input type="number" name="pizza.id" value="${pizza.id}" required/>
                 <br><br>
                 Deseja mesmo fazer isso? <input type="checkbox" required/>
                 <br><br>

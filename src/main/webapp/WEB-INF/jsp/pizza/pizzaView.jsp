@@ -32,6 +32,13 @@
                 <input type="submit" value="Atualizar pizza"/>
             </form>
         </div>
+                
+        <div>
+            <h1>Listar Pizzas</h1>
+            <form action="${pageContext.request.contextPath}/pizza/listar" method="get">
+                <input type="submit" value="Listar pizzas"/>
+            </form>
+        </div>
         
     </body>
 </html>

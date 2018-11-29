@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.Result;
 import br.edu.fjn.pizzahub.persistence.PizzaRepository;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import br.edu.fjn.pizzahub.model.Pizza;
+import java.util.List;
 import javax.inject.Inject;
 
 /**
@@ -44,6 +45,13 @@ public class PizzaController {
     @Get("atualizar")
     public void pizzaUpdateView(){
         
+    }
+    
+    @Get("listar")
+    public void pizzaListView() {
+        PizzaRepository pizzaRepository = new PizzaRepository();
+        List<Pizza> pizzas = pizzaRepository.listAll();
+        result.include("pizzas", pizzas);
     }
     
     @Post("save")

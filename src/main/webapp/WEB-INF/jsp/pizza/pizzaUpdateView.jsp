@@ -17,11 +17,11 @@
             <form action="${pageContext.request.contextPath}/pizza/update" method="post">
                 *Informe o ID da pizza a ser atualizada!
                 <br><br>
-                ID: <input type="number" name="pizza.id" required/>
-                Nome: <input type="text" name="pizza.name"/>
-                Sabor: <input type="text" name="pizza.flavor"/>
-                Ingredientes: <input type="text" name="pizza.ingredients"/>
-                Preço: <input type="number" name="pizza.price"/>
+                ID: <input type="number" name="pizza.id" value="${pizza.id}" required/>
+                Nome: <input type="text" name="pizza.name" value="${pizza.name}"/>
+                Sabor: <input type="text" name="pizza.flavor" value="${pizza.flavor}"/>
+                Ingredientes: <input type="text" name="pizza.ingredients" value="${pizza.ingredients}"/>
+                Preço: <input type="number" name="pizza.price" value="${pizza.price}"/>
                 <br><br>
                 Deseja mesmo fazer isso? <input type="checkbox" required/>
                 <br><br>
