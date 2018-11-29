@@ -1,4 +1,4 @@
-package br.edu.fjn.pizzahub.dao;
+package br.edu.fjn.pizzahub.persistence;
 
 import javax.persistence.EntityManager;
 
@@ -7,20 +7,20 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.edu.fjn.pizzahub.dao.util.Factory;
-import br.edu.fjn.pizzahub.dao.util.OrmException;
-import br.edu.fjn.pizzahub.model.Person;
+import br.edu.fjn.pizzahub.persistence.util.Factory;
+import br.edu.fjn.pizzahub.persistence.util.OrmException;
+import br.edu.fjn.pizzahub.model.State;
 
-public class PersonDAO {
+public class StateRepository {
 
-    public void save(Person person) throws OrmException {
+    public void save(State state) throws OrmException {
 
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
 
         try {
 
-            em.persist(person);
+            em.persist(state);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -35,14 +35,14 @@ public class PersonDAO {
         }
     }
 
-    public void update(Person person) throws OrmException {
+    public void update(State state) throws OrmException {
 
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
 
         try {
 
-            em.merge(person);
+            em.merge(state);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -57,21 +57,21 @@ public class PersonDAO {
         }
     }
 
-    public Person findById(Integer id) {
+    public State findById(Integer id) {
         EntityManager em = Factory.getFactory();
-        Person person = em.find(Person.class, id);
+        State state = em.find(State.class, id);
         em.close();
-        return person;
+        return state;
     }
 
     public void remove(Integer id) throws OrmException {
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
-        Person person = findById(id);
+        State state = findById(id);
 
         try {
 
-            em.remove(person);
+            em.remove(state);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -86,13 +86,13 @@ public class PersonDAO {
         }
     }
 
-    public Person findByCpf(String cpf) {
+    public State findByUf(String uf) {
         EntityManager em = Factory.getFactory();
         Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(Person.class);
-        criteria.add(Restrictions.ilike("cpf", cpf, MatchMode.EXACT));
-        Person person = (Person) criteria.uniqueResult();
+        Criteria criteria = session.createCriteria(State.class);
+        criteria.add(Restrictions.ilike("uf", uf, MatchMode.EXACT));
+        State state = (State) criteria.uniqueResult();
         em.close();
-        return person;
+        return state;
     }
 }

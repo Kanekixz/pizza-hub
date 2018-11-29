@@ -1,4 +1,4 @@
-package br.edu.fjn.pizzahub.dao;
+package br.edu.fjn.pizzahub.persistence;
 
 import javax.persistence.EntityManager;
 
@@ -7,20 +7,20 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.edu.fjn.pizzahub.dao.util.Factory;
-import br.edu.fjn.pizzahub.dao.util.OrmException;
-import br.edu.fjn.pizzahub.model.State;
+import br.edu.fjn.pizzahub.persistence.util.Factory;
+import br.edu.fjn.pizzahub.persistence.util.OrmException;
+import br.edu.fjn.pizzahub.model.City;
 
-public class StateDAO {
+public class CityRepository {
 
-    public void save(State state) throws OrmException {
+    public void update(City city) throws OrmException {
 
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
 
         try {
 
-            em.persist(state);
+            em.merge(city);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -35,43 +35,21 @@ public class StateDAO {
         }
     }
 
-    public void update(State state) throws OrmException {
-
+    public City findById(Integer id) {
         EntityManager em = Factory.getFactory();
-        em.getTransaction().begin();
-
-        try {
-
-            em.merge(state);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-
-            if (em.getTransaction().isActive()) {
-                em.getTransaction().rollback();
-                throw new OrmException("Ocorreu um erro interno!");
-            }
-
-        } finally {
-
-            em.close();
-        }
-    }
-
-    public State findById(Integer id) {
-        EntityManager em = Factory.getFactory();
-        State state = em.find(State.class, id);
+        City city = em.find(City.class, id);
         em.close();
-        return state;
+        return city;
     }
 
     public void remove(Integer id) throws OrmException {
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
-        State state = findById(id);
+        City city = findById(id);
 
         try {
 
-            em.remove(state);
+            em.remove(city);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -86,13 +64,14 @@ public class StateDAO {
         }
     }
 
-    public State findByUf(String uf) {
+    public City findByName(String name) {
         EntityManager em = Factory.getFactory();
         Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(State.class);
-        criteria.add(Restrictions.ilike("uf", uf, MatchMode.EXACT));
-        State state = (State) criteria.uniqueResult();
+        Criteria criteria = session.createCriteria(City.class);
+        criteria.add(Restrictions.ilike("name", name, MatchMode.EXACT));
+        City city = (City) criteria.uniqueResult();
         em.close();
-        return state;
+        return city;
     }
+
 }

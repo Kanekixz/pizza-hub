@@ -1,7 +1,7 @@
-package br.edu.fjn.pizzahub.dao;
+package br.edu.fjn.pizzahub.persistence;
 
-import br.edu.fjn.pizzahub.dao.util.Factory;
-import br.edu.fjn.pizzahub.dao.util.OrmException;
+import br.edu.fjn.pizzahub.persistence.util.Factory;
+import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import br.edu.fjn.pizzahub.model.Login;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -11,7 +11,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-public class LoginDAO {
+public class LoginRepository {
 
     public void save(Login login) throws OrmException {
 

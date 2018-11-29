@@ -1,4 +1,4 @@
-package br.edu.fjn.pizzahub.dao;
+package br.edu.fjn.pizzahub.persistence;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.edu.fjn.pizzahub.dao.util.Factory;
-import br.edu.fjn.pizzahub.dao.util.OrmException;
+import br.edu.fjn.pizzahub.persistence.util.Factory;
+import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import br.edu.fjn.pizzahub.model.Pizza;
 
-public class PizzaDAO {
+public class PizzaRepository {
 
     public void save(Pizza pizza) throws OrmException {
 

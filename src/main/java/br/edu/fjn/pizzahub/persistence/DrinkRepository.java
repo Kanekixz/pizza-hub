@@ -1,4 +1,4 @@
-package br.edu.fjn.pizzahub.dao;
+package br.edu.fjn.pizzahub.persistence;
 
 import java.util.List;
 
@@ -6,23 +6,24 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.edu.fjn.pizzahub.dao.util.Factory;
-import br.edu.fjn.pizzahub.dao.util.OrmException;
-import br.edu.fjn.pizzahub.model.CreditCard;
+import br.edu.fjn.pizzahub.persistence.util.Factory;
+import br.edu.fjn.pizzahub.persistence.util.OrmException;
+import br.edu.fjn.pizzahub.model.Drink;
 
-public class CreditCardDAO {
+public class DrinkRepository {
 
-    public void save(CreditCard creditCard) throws OrmException {
+    public void save(Drink drink) throws OrmException {
 
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
 
         try {
 
-            em.persist(creditCard);
+            em.persist(drink);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -37,14 +38,14 @@ public class CreditCardDAO {
         }
     }
 
-    public void update(CreditCard creditCard) throws OrmException {
+    public void update(Drink drink) throws OrmException {
 
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
 
         try {
 
-            em.merge(creditCard);
+            em.merge(drink);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -59,21 +60,21 @@ public class CreditCardDAO {
         }
     }
 
-    public CreditCard findById(Integer id) {
+    public Drink findById(Integer id) {
         EntityManager em = Factory.getFactory();
-        CreditCard creditCard = em.find(CreditCard.class, id);
+        Drink drink = em.find(Drink.class, id);
         em.close();
-        return creditCard;
+        return drink;
     }
 
     public void remove(Integer id) throws OrmException {
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
-        CreditCard creditCard = findById(id);
+        Drink drink = findById(id);
 
         try {
 
-            em.remove(creditCard);
+            em.remove(drink);
             em.getTransaction().commit();
         } catch (Exception e) {
 
@@ -88,43 +89,45 @@ public class CreditCardDAO {
         }
     }
 
-    public List<CreditCard> listAll() {
+    public List<Drink> listAll() {
         EntityManager em = Factory.getFactory();
         Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(CreditCard.class);
-        List<CreditCard> creditCards = criteria.list();
+        Criteria criteria = session.createCriteria(Drink.class);
+        List<Drink> drinks = criteria.list();
         em.close();
-        return creditCards;
+        return drinks;
     }
 
-    public CreditCard findByNumber(String number) {
+    public List<Drink> findByName(String name) {
         EntityManager em = Factory.getFactory();
         Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(CreditCard.class);
-        criteria.add(Restrictions.ilike("number", number, MatchMode.EXACT));
-        CreditCard creditCard = (CreditCard) criteria.uniqueResult();
+        Criteria criteria = session.createCriteria(Drink.class);
+        criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
+        List<Drink> drinks = criteria.list();
         em.close();
-        return creditCard;
+        return drinks;
     }
 
-    public List<CreditCard> findByOwnerName(String ownerName) {
+    public List<Drink> findByValue(String value) {
         EntityManager em = Factory.getFactory();
         Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(CreditCard.class);
-        criteria.add(Restrictions.ilike("ownerName", ownerName, MatchMode.ANYWHERE));
-        List<CreditCard> creditCards = criteria.list();
+        Criteria criteria = session.createCriteria(Drink.class);
+        criteria.add(Restrictions.ilike("value", value, MatchMode.ANYWHERE));
+        List<Drink> drinks = criteria.list();
         em.close();
-        return creditCards;
+        return drinks;
     }
 
-    public List<CreditCard> findByFlag(String flag) {
+    public Drink findByNameAndValue(String name, String value) {
         EntityManager em = Factory.getFactory();
         Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(CreditCard.class);
-        criteria.add(Restrictions.ilike("flag", flag, MatchMode.ANYWHERE));
-        List<CreditCard> creditCards = criteria.list();
+        Criteria criteria = session.createCriteria(Drink.class);
+        Criterion c1 = Restrictions.ilike("name", name, MatchMode.EXACT);
+        Criterion c2 = Restrictions.ilike("value", value, MatchMode.ANYWHERE);
+        criteria.add(Restrictions.and(c1, c2));
+        Drink drink = (Drink) criteria.uniqueResult();
         em.close();
-        return creditCards;
+        return drink;
     }
 
 }

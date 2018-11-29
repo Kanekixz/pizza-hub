@@ -1,4 +1,4 @@
-package br.edu.fjn.pizzahub.dao.util;
+package br.edu.fjn.pizzahub.persistence.util;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
