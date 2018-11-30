@@ -8,29 +8,57 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Lista de Pizzas</title>
   </head>
   <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container">
+              <div className="navbar-header">
+                  <a href='${pageContext.request.contextPath}' class="navbar-brand">
+                      Pizza Hub
+                  </a>
+              </div>
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
     <table>
         <thead>
             <tr>
-            <th>Nome</th>
-            <th>Sabor</th>
-            <th>Ingredientes</th>
-            <th>Preço(R$)</th>
-            <th>Ações</th>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Sabor</th>
+                <th>Ingredientes</th>
+                <th>Preço(R$)</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
+            <div>
+                <form action="${pageContext.request.contextPath}/pizza/buscar" method="post">
+                    <input type="text" required placeholder="Buscar nome" name="pizza.name" value="${pizza.name}"/>
+                    <input type="submit" value="Buscar"/>
+                </form>
+            </div>
             <c:forEach items="${pizzas}" var="pizza">
                 <tr>
+                    <td>${pizza.id}</td>
                     <td>${pizza.name}</td>
                     <td>${pizza.flavor}</td>
                     <td>${pizza.ingredients}</td>
                     <td>${pizza.price}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/pizza/atualizar/${pizza.id}">Atualizar</a>
                         <a href="${pageContext.request.contextPath}/pizza/remove/${pizza.id}">Remover</a>
                     </td>
                 </tr>

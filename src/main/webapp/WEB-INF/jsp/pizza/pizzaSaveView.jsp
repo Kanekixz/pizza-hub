@@ -9,11 +9,32 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
         <title>Adcionar Pizza</title>
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <div className="navbar-header">
+                    <a href='${pageContext.request.contextPath}' class="navbar-brand">
+                        Pizza Hub
+                    </a>
+                </div>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div>
-           <h1>Adicionar Pizza</h1>
+            <h1>Adicionar Pizza</h1>
             <form action="${pageContext.request.contextPath}/pizza/save" method="post">
                 Nome: <input type="text" name="pizza.name" value="${pizza.name}" required/>
                 Sabor: <input type="text" name="pizza.flavor" value="${pizza.flavor}" required/>
@@ -23,7 +44,7 @@
                 <button type="subimit">Adicionar</button>
             </form> 
         </div>
-        
-        
+
+
     </body>
 </html>

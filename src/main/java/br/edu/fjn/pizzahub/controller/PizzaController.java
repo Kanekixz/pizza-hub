@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.Result;
 import br.edu.fjn.pizzahub.persistence.PizzaRepository;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import br.edu.fjn.pizzahub.model.Pizza;
+import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -37,11 +38,6 @@ public class PizzaController {
         
     }
     
-    @Get("remover")
-    public void pizzaRemoveView(){
-        
-    }
-    
     @Get("atualizar")
     public void pizzaUpdateView(){
         
@@ -58,15 +54,17 @@ public class PizzaController {
     public void save(Pizza pizza) throws OrmException{
         PizzaRepository pizzaRepository = new PizzaRepository();
         pizzaRepository.save(pizza);
-        result.redirectTo(this).pizzaView();
+        result.redirectTo(this).pizzaListView();
         
     }
     
-    @Post("remove")
-    public void remove(Pizza pizza) throws OrmException{
+    @Get("remove/{id}")
+    public void remove(Integer id) throws OrmException{
+       Pizza pizza = new Pizza();
+       pizza.setId(id);
        PizzaRepository pizzaRepository = new PizzaRepository();
        pizzaRepository.remove(pizza.getId());
-       result.redirectTo(this).pizzaView();
+       result.redirectTo(this).pizzaListView();
     }
     
     @Post("update")
@@ -92,6 +90,15 @@ public class PizzaController {
        }
       
        pizzaRepository.update(p);
-       result.redirectTo(this).pizzaView();
+       result.redirectTo(this).pizzaListView();
     }
+    
+    @Post("buscar")
+    public void findByName(Pizza pizza) throws OrmException{
+       PizzaRepository pizzaRepository = new PizzaRepository();
+       List<Pizza> pizzas = pizzaRepository.findByName(pizza.getName());
+       result.include("pizzas", pizzas);
+       result.of(this).pizzaListView();
+    }
+    
 }
