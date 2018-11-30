@@ -1,6 +1,6 @@
 <%-- 
-    Document   : pizzaView
-    Created on : Nov 29, 2018, 2:01:07 AM
+    Document   : formView
+    Created on : Nov 28, 2018, 6:05:23 AM
     Author     : Hugo
 --%>
 
@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
-        <title>Pizza</title>
+        <title>Adcionar Bebida</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg">
@@ -23,29 +23,28 @@
                 </div>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/adicionar">Nova Bebida</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/atualizar">Atualizar Bebida</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/listar">Lista de Bebidas</a>
                     </li>
                 </ul>
             </div>
         </nav>
         <div>
-            <h1>Gerenciador de Pizzas</h1>
-            <form action="${pageContext.request.contextPath}/pizza/adicionar" method="get">
-                <input type="submit" value="Adicionar pizza"/>
-            </form>
-            <form action="${pageContext.request.contextPath}/pizza/atualizar" method="get">
-                <input type="submit" value="Atualizar pizza"/>
-            </form>
-            <form action="${pageContext.request.contextPath}/pizza/listar" method="get">
-                <input type="submit" value="Listar pizzas"/>
-            </form>
+            <h1>Adicionar Bebida</h1>
+            <form action="${pageContext.request.contextPath}/bebida/save" method="post">
+                <input type="text" name="drink.name" value="${drink.name}" required placeholder="Nome"/><br><br>
+                <input type="text" name="drink.value" value="${pizza.value}" required placeholder="Valor, Ex: 600ml"/><br><br>
+                <input type="number" name="drink.price" value="${drink.price}" required placeholder="Preço"/>
+                <br><br>
+                <button type="subimit">Adicionar</button>
+            </form> 
         </div>
+
 
     </body>
 </html>

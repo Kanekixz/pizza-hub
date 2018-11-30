@@ -13,7 +13,6 @@ import br.com.caelum.vraptor.Result;
 import br.edu.fjn.pizzahub.persistence.PizzaRepository;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import br.edu.fjn.pizzahub.model.Pizza;
-import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 

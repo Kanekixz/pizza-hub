@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homeView
-    Created on : Nov 29, 2018, 1:50:07 AM
+    Document   : pizzaView
+    Created on : Nov 29, 2018, 2:01:07 AM
     Author     : Hugo
 --%>
 
@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
-        <title>Pizza Hub</title>
+        <title>Bebida</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg">
@@ -23,24 +23,29 @@
                 </div>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza">Pizza</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/adicionar">Nova Bebida</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida">Bebidas</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/atualizar">Atualizar Bebida</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/listar">Lista de Bebidas</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <img src="${pageContext.request.contextPath}/css/pizza-hub-logo.png" alt="some text" width=30% height=30%>
         <div>
-            <form action="${pageContext.request.contextPath}/pizza" method="get">
-                <input type="submit" value="Gerenciar Pizzas"/>
+            <h1>Gerenciador de Bebidas</h1>
+            <form action="${pageContext.request.contextPath}/bebida/adicionar" method="get">
+                <input type="submit" value="Adicionar Bebida"/>
+            </form>
+            <form action="${pageContext.request.contextPath}/bebida/atualizar" method="get">
+                <input type="submit" value="Atualizar Bebida"/>
+            </form>
+            <form action="${pageContext.request.contextPath}/bebida/listar" method="get">
+                <input type="submit" value="Listar Bebidas"/>
             </form>
         </div>
-        <div>
-            <form action="${pageContext.request.contextPath}/bebida" method="get">
-                <input type="submit" value="Gerenciar Bebidas"/>
-            </form>
-        </div>
+
     </body>
 </html>
