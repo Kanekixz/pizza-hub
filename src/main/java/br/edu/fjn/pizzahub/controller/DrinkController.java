@@ -46,7 +46,9 @@ public class DrinkController {
     
     @Get("listar")
     public void drinkListView() {
-        
+        DrinkRepository drinkRepository = new DrinkRepository();
+        List<Drink> drinks = drinkRepository.listAll();
+        result.include("drinks", drinks);
     }
     
     @Post("save")
@@ -72,10 +74,19 @@ public class DrinkController {
        }
        
        if(drink.getPrice() != null){
-           d.setPrice(drink.getPrice());
+           d.setPrice(drink.getPrice());    
        }
        
        drinkRepository.update(d);
+       result.redirectTo(this).drinkListView();
+    }
+    
+    @Get("remove/{id}")
+    public void remove(Integer id) throws OrmException{
+       Drink drink = new Drink();
+       drink.setId(id);
+       DrinkRepository drinkRepository = new DrinkRepository();
+       drinkRepository.remove(drink.getId());
        result.redirectTo(this).drinkListView();
     }
     
