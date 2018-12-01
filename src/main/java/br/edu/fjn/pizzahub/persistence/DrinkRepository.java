@@ -70,7 +70,7 @@ public class DrinkRepository {
     public void remove(Integer id) throws OrmException {
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
-        Drink drink = findById(id);
+        Drink drink = em.find(Drink.class, id);
 
         try {
 

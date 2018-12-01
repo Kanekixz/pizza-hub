@@ -23,24 +23,35 @@
                 </div>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza">Pizza</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza">Pizzas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida">Bebidas</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/bebida">Bebidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario">Funcionarios</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <img src="${pageContext.request.contextPath}/css/pizza-hub-logo.png" alt="some text" width=30% height=30%>
-        <div>
-            <form action="${pageContext.request.contextPath}/pizza" method="get">
-                <input type="submit" value="Gerenciar Pizzas"/>
-            </form>
+        <div align="center">
+            <img src="${pageContext.request.contextPath}/css/pizza-hub-logo.png" alt="some text" width=30% height=30%>
+            <div>
+                <form action="${pageContext.request.contextPath}/pizza" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Gerenciar Pizzas"/>
+                </form>
+            </div>
+            <div>
+                <form action="${pageContext.request.contextPath}/bebida" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Gerenciar Bebidas"/>
+                </form>
+            </div>
+            <div>
+                <form action="${pageContext.request.contextPath}/funcionario" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Gerenciar Funcionarios"/>
+                </form>        
+            </div>
         </div>
-        <div>
-            <form action="${pageContext.request.contextPath}/bebida" method="get">
-                <input type="submit" value="Gerenciar Bebidas"/>
-            </form>
-        </div>
+
     </body>
 </html>

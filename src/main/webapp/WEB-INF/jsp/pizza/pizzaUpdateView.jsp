@@ -23,31 +23,50 @@
                 </div>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div>
+        <div align="center">
             <h1>Atualizar Pizza</h1>
             <form action="${pageContext.request.contextPath}/pizza/update" method="post">
-                *Informe o ID da pizza a ser atualizada!
-                <br><br>
-                <input type="number" name="pizza.id" value="${pizza.id}" required placeholder="Id"/><br><br>
-                <input type="text" name="pizza.name" value="${pizza.name}" placeholder="Nome"/><br><br>
-                <input type="text" name="pizza.flavor" value="${pizza.flavor}" placeholder="Sabor"/><br><br>
-                <input type="text" name="pizza.ingredients" value="${pizza.ingredients}" placeholder="Ingredientes"/><br><br>
-                <input type="number" name="pizza.price" value="${pizza.price}" placeholder="Preço"/>
-                <br><br>
-                Deseja mesmo fazer isso? <input type="checkbox" required/>
-                <br><br>
-                <button type="subimit">Atualizar</button>
+                <div align="center">*Informe o ID da pizza a ser atualizada!</div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="number" class="form-control" name="pizza.id" value="${pizza.id}" required placeholder="Id"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="pizza.name" value="${pizza.name}" placeholder="Nome"/>
+                    </div>
+                </div>  
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="pizza.flavor" value="${pizza.flavor}" placeholder="Sabor"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="pizza.ingredients" value="${pizza.ingredients}" placeholder="Ingredientes"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="number" class="form-control" name="pizza.price" value="${pizza.price}" placeholder="Preço"/>
+                    </div>
+                </div>
+                <div align="center">Deseja mesmo fazer isso? <input type="checkbox" required/></div>
+                <DIV ALIGN="CENTER">
+                    <button type="subimit" class="btn btn-outline-secondary">Atualizar</button>
+                </div>
             </form>
         </div>
     </body>

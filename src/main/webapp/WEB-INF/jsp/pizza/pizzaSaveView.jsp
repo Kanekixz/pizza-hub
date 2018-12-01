@@ -23,26 +23,43 @@
                 </div>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div>
+            <div align="center">
             <h1>Adicionar Pizza</h1>
             <form action="${pageContext.request.contextPath}/pizza/save" method="post">
-                <input type="text" name="pizza.name" value="${pizza.name}" required placeholder="Nome"/><br><br>
-                <input type="text" name="pizza.flavor" value="${pizza.flavor}" required placeholder="Sabor"/><br><br>
-                <input type="text" name="pizza.ingredients" value="${pizza.ingredients}" required placeholder="Ingredientes"/><br><br>
-                <input type="number" name="pizza.price" value="${pizza.price}" required placeholder="Preço"/>
-                <br><br>
-                <button type="subimit">Adicionar</button>
+                <div align="center">*O nome da pizza deve ser unico!</div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="pizza.name" value="${pizza.name}" required placeholder="Nome"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="pizza.flavor" value="${pizza.flavor}" required placeholder="Sabor"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="pizza.ingredients" value="${pizza.ingredients}" required placeholder="Ingredientes"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="number" class="form-control" name="pizza.price" value="${pizza.price}" required placeholder="Preço"/>
+                    </div>
+                </div>
+                <button type="subimit" class="btn btn-outline-secondary">Adicionar</button>
+
             </form> 
         </div>
 

@@ -11,9 +11,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.edu.fjn.pizzahub.model.Drink;
-import br.edu.fjn.pizzahub.model.Pizza;
 import br.edu.fjn.pizzahub.persistence.DrinkRepository;
-import br.edu.fjn.pizzahub.persistence.PizzaRepository;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import java.util.List;
 import javax.inject.Inject;
@@ -88,6 +86,14 @@ public class DrinkController {
        DrinkRepository drinkRepository = new DrinkRepository();
        drinkRepository.remove(drink.getId());
        result.redirectTo(this).drinkListView();
+    }
+    
+    @Post("buscar")
+    public void findByName(Drink drink) throws OrmException{
+       DrinkRepository drinkRepository = new DrinkRepository();
+       List<Drink> drinks = drinkRepository.findByName(drink.getName());
+       result.include("drinks", drinks);
+       result.of(this).drinkListView();
     }
     
     

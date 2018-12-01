@@ -23,13 +23,13 @@
                 </div>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/adicionar">Nova Bebida</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/bebida/adicionar">Nova Bebida</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/atualizar">Atualizar Bebida</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/bebida/atualizar">Atualizar Bebida</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/bebida/listar">Lista de Bebidas</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/bebida/listar">Lista de Bebidas</a>
                     </li>
                 </ul>
             </div>

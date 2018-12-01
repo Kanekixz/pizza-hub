@@ -23,28 +23,35 @@
                 </div>
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/adicionar">Nova Pizza</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/atualizar">Atualizar Pizza</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/pizza/listar">Lista de Pizzas</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div>
+        <div align="center">
             <h1>Gerenciador de Pizzas</h1>
-            <form action="${pageContext.request.contextPath}/pizza/adicionar" method="get">
-                <input type="submit" value="Adicionar pizza"/>
-            </form>
-            <form action="${pageContext.request.contextPath}/pizza/atualizar" method="get">
-                <input type="submit" value="Atualizar pizza"/>
-            </form>
-            <form action="${pageContext.request.contextPath}/pizza/listar" method="get">
-                <input type="submit" value="Listar pizzas"/>
-            </form>
+            <div>
+                
+                <form action="${pageContext.request.contextPath}/pizza/adicionar" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Adicionar pizza"/>
+                </form>
+            
+            
+                <form action="${pageContext.request.contextPath}/pizza/atualizar" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Atualizar pizza"/>
+                </form>
+            
+            
+                <form action="${pageContext.request.contextPath}/pizza/listar" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Listar pizzas"/>
+                </form>
+            </div>
         </div>
 
     </body>
