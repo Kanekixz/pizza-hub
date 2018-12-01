@@ -35,7 +35,7 @@
             </div>
         </nav>
         <div>
-            <h1>Gerenciador de Bebidas</h1>
+            <h1>Gerenciar Bebidas</h1>
             <form action="${pageContext.request.contextPath}/bebida/adicionar" method="get">
                 <input type="submit" value="Adicionar Bebida"/>
             </form>

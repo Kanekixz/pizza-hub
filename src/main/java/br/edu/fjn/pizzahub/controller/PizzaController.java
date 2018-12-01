@@ -80,7 +80,14 @@ public class PizzaController {
             Pizza p = pizzaRepository.findById(pizza.getId());
 
             if (pizza.getName() != null) {
-                p.setName(pizza.getName());
+                if(pizzaRepository.findByNameExact(pizza.getName()) != null){
+                    result.include("menssage", "Já Existe uma pizza com esse nome!");
+                    //result.redirectTo(this).pizzaUpdateView();
+                } else {
+                   p.setName(pizza.getName()); 
+                }
+                
+
             }
 
             if (pizza.getFlavor() != null) {

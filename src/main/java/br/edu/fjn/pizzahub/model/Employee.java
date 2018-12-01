@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Employee {
@@ -22,8 +20,7 @@ public class Employee {
 	 @OneToOne(cascade = CascadeType.ALL)
 	 private Person person;
 	 @Column(nullable = false)
-         @Temporal(TemporalType.DATE)
-	 private Calendar dateOfBirth;
+	 private String dateOfBirth;
 	 @Column(nullable = false)
 	 private double salary;
 	 @Column(nullable = false)
@@ -54,11 +51,11 @@ public class Employee {
 		this.person = person;
 	}
 
-	public Calendar getDateOfBirth() {
+	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Calendar dateOfBirth) {
+	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
