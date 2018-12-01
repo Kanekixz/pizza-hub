@@ -105,13 +105,11 @@ public class PizzaRepository {
         return pizzas;
     }
 
-    public Pizza findByNameAndFlavor(String name, String flavor) {
+    public Pizza findByNameExact(String name) {
         EntityManager em = Factory.getFactory();
         Session session = (Session) em.getDelegate();
         Criteria criteria = session.createCriteria(Pizza.class);
-        Criterion c1 = Restrictions.ilike("name", name, MatchMode.EXACT);
-        Criterion c2 = Restrictions.ilike("flavor", flavor, MatchMode.EXACT);
-        criteria.add(Restrictions.and(c1, c2));
+        criteria.add(Restrictions.ilike("name", name, MatchMode.EXACT));
         Pizza pizza = (Pizza) criteria.uniqueResult();
         em.close();
         return pizza;

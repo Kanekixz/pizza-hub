@@ -64,6 +64,7 @@
                     </div>
                 </div>
                 <div align="center">Deseja mesmo fazer isso? <input type="checkbox" required/></div>
+                <div align="center"><h5>${menssage}<h5></div>
                 <DIV ALIGN="CENTER">
                     <button type="subimit" class="btn btn-outline-secondary">Atualizar</button>
                 </div>

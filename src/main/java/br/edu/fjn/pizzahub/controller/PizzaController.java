@@ -23,81 +23,93 @@ import javax.inject.Inject;
 @Controller
 @Path("pizza")
 public class PizzaController {
-    
+
     @Inject
     private Result result;
-    
+
     @Get("")
     public void pizzaView() {
-        
+
     }
-    
+
     @Get("adicionar")
     public void pizzaSaveView() {
-        
+
     }
-    
+
     @Get("atualizar")
-    public void pizzaUpdateView(){
-        
+    public void pizzaUpdateView() {
+
     }
-    
+
     @Get("listar")
     public void pizzaListView() {
         PizzaRepository pizzaRepository = new PizzaRepository();
         List<Pizza> pizzas = pizzaRepository.listAll();
         result.include("pizzas", pizzas);
     }
-    
+
     @Post("save")
-    public void save(Pizza pizza) throws OrmException{
+    public void save(Pizza pizza) throws OrmException {
         PizzaRepository pizzaRepository = new PizzaRepository();
-        pizzaRepository.save(pizza);
-        result.redirectTo(this).pizzaListView();
-        
+
+        if (pizzaRepository.findByNameExact(pizza.getName()) == null) {
+            pizzaRepository.save(pizza);
+            result.redirectTo(this).pizzaListView();
+        } else {
+            result.include("menssage", "Já existe uma pizza com esse nome!");
+            result.redirectTo(this).pizzaSaveView();
+        }
+
     }
-    
+
     @Get("remove/{id}")
-    public void remove(Integer id) throws OrmException{
-       Pizza pizza = new Pizza();
-       pizza.setId(id);
-       PizzaRepository pizzaRepository = new PizzaRepository();
-       pizzaRepository.remove(pizza.getId());
-       result.redirectTo(this).pizzaListView();
+    public void remove(Integer id) throws OrmException {
+        Pizza pizza = new Pizza();
+        pizza.setId(id);
+        PizzaRepository pizzaRepository = new PizzaRepository();
+        pizzaRepository.remove(pizza.getId());
+        result.redirectTo(this).pizzaListView();
     }
-    
+
     @Post("update")
-    public void update(Pizza pizza) throws OrmException{
-       PizzaRepository pizzaRepository = new PizzaRepository();
-       
-       Pizza p = pizzaRepository.findById(pizza.getId());
-       
-       if(pizza.getName() != null){
-           p.setName(pizza.getName());
-       }
-       
-       if(pizza.getFlavor() != null){
-           p.setFlavor(pizza.getFlavor());
-       }
-       
-       if(pizza.getIngredients() != null){
-           p.setIngredients(pizza.getIngredients());
-       }
-       
-       if(pizza.getPrice() != 0){
-           p.setPrice(pizza.getPrice());
-       }
-      
-       pizzaRepository.update(p);
-       result.redirectTo(this).pizzaListView();
+    public void update(Pizza pizza) throws OrmException {
+        PizzaRepository pizzaRepository = new PizzaRepository();
+
+        if (pizzaRepository.findById(pizza.getId()) != null) {
+            Pizza p = pizzaRepository.findById(pizza.getId());
+
+            if (pizza.getName() != null) {
+                p.setName(pizza.getName());
+            }
+
+            if (pizza.getFlavor() != null) {
+                p.setFlavor(pizza.getFlavor());
+            }
+
+            if (pizza.getIngredients() != null) {
+                p.setIngredients(pizza.getIngredients());
+            }
+
+            if (pizza.getPrice() != 0) {
+                p.setPrice(pizza.getPrice());
+            }
+
+            pizzaRepository.update(p);
+            result.redirectTo(this).pizzaListView();
+        } else {
+            result.include("menssage", "Não Existe uma pizza com esse id!");
+            result.redirectTo(this).pizzaUpdateView();
+        }
+
     }
-    
+
     @Post("buscar")
-    public void findByName(Pizza pizza) throws OrmException{
-       PizzaRepository pizzaRepository = new PizzaRepository();
-       List<Pizza> pizzas = pizzaRepository.findByName(pizza.getName());
-       result.include("pizzas", pizzas);
-       result.of(this).pizzaListView();
+    public void findByName(Pizza pizza) throws OrmException {
+        PizzaRepository pizzaRepository = new PizzaRepository();
+        List<Pizza> pizzas = pizzaRepository.findByName(pizza.getName());
+        result.include("pizzas", pizzas);
+        result.of(this).pizzaListView();
     }
-    
+
 }

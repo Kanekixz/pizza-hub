@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </nav>
-            <div align="center">
+        <div align="center">
             <h1>Adicionar Pizza</h1>
             <form action="${pageContext.request.contextPath}/pizza/save" method="post">
                 <div align="center">*O nome da pizza deve ser unico!</div>
@@ -58,6 +58,7 @@
                         <input type="number" class="form-control" name="pizza.price" value="${pizza.price}" required placeholder="Preço"/>
                     </div>
                 </div>
+                <h5>${menssage}</h5>
                 <button type="subimit" class="btn btn-outline-secondary">Adicionar</button>
 
             </form> 
