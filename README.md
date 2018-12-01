@@ -1,5 +1,5 @@
 # pizza-hub
-Pizza Hub application developed with Vraptor, Jstl, Hibernate, JPA and Postgres
+Pizza Hub application developed with Vraptor, Jstl, Hibernate, JPA, Postgres and Bootstrap.
 
 1 - Create database in postgres with pizza-hub name
 
