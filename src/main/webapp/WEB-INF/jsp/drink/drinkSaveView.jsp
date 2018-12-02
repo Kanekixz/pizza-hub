@@ -34,17 +34,27 @@
                 </ul>
             </div>
         </nav>
-        <div>
+        <div align="center">
             <h1>Adicionar Bebida</h1>
             <form action="${pageContext.request.contextPath}/bebida/save" method="post">
-                <input type="text" name="drink.name" value="${drink.name}" required placeholder="Nome"/><br><br>
-                <input type="text" name="drink.value" value="${pizza.value}" required placeholder="Valor, Ex: 600ml"/><br><br>
-                <input type="number" name="drink.price" value="${drink.price}" required placeholder="Preço"/>
-                <br><br>
-                <button type="subimit">Adicionar</button>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="drink.name" value="${drink.name}" required placeholder="Nome"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="drink.value" value="${drink.value}" required placeholder="Valor, Ex: 600ml"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="number" class="form-control" name="drink.price" value="${drink.price}" required placeholder="Preço"/>
+                    </div>
+                </div>
+                <button type="subimit" class="btn btn-outline-secondary">Adicionar</button>
             </form> 
         </div>
-
 
     </body>
 </html>

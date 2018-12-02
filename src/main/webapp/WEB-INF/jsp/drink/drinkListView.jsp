@@ -18,7 +18,7 @@
             <div class="container">
                 <div className="navbar-header" class="col-2">
                     <a href='${pageContext.request.contextPath}' class="navbar-brand">
-                        <img src="${pageContext.request.contextPath}/css/pizza-hub-logo.png" width=100% height=100%>
+                        <img src="${pageContext.request.contextPath}/css/pizza-hub-logo.png" width=100% height=9%>
                     </a>
                 </div>
                 <ul class="navbar-nav mr-auto">
@@ -34,34 +34,44 @@
                 </ul>
             </div>
         </nav>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Preço(R$)</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-            <div>
-                <form action="${pageContext.request.contextPath}/bebida/buscar" method="post">
-                    <input type="text" required placeholder="Buscar nome" name="drink.name" value="${dink.name}"/>
-                    <input type="submit" value="Buscar"/>
-                </form>
-            </div>
-            <c:forEach items="${drinks}" var="drink">
-                <tr>
-                    <td>${drink.id}</td>
-                    <td>${drink.name}</td>
-                    <td>${drink.value}</td>
-                    <td>${drink.price}</td>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/bebida/remove/${drink.id}">Remover</a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
+        <div align="center">
+            <table class="table table-bordered table-dark table-hover container">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>Preço(R$)</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <div>
+                    <form action="${pageContext.request.contextPath}/bebida/buscar" method="post">
+                        <div class="form-group">
+                            <div class="row justify-content-md-center">
+                                <div class="col-3">
+                                    <input type="text" class="form-control" required placeholder="Buscar nome" name="drink.name" value="${drink.name}"/>
+                                </div>
+                                <div class="col-0">
+                                    <input id="btnList" type="submit" class="btn btn-outline-secondary" value="Buscar"/>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+                <c:forEach items="${drinks}" var="drink">
+                    <tr>
+                        <td>${drink.id}</td>
+                        <td>${drink.name}</td>
+                        <td>${drink.value}</td>
+                        <td>${drink.price}</td>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/bebida/remove/${drink.id}">Remover</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
 </body>
 </html>

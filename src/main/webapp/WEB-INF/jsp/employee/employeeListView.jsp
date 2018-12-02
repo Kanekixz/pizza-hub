@@ -18,7 +18,7 @@
             <div class="container">
                 <div className="navbar-header" class="col-2">
                     <a href='${pageContext.request.contextPath}' class="navbar-brand">
-                        <img src="${pageContext.request.contextPath}/css/pizza-hub-logo.png" width=100% height=100%>
+                        <img src="${pageContext.request.contextPath}/css/pizza-hub-logo.png" width=100% height=9%>
                     </a>
                 </div>
                 <ul class="navbar-nav mr-auto">

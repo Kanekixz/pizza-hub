@@ -39,45 +39,39 @@
             <form action="${pageContext.request.contextPath}/funcionario/update" method="post">
                 <div align="center">*Informe o ID do funcionário a ser atualizado!</div>
                 <div align="center"><h5>${menssage}</h5></div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="number" class="form-control" name="employee.id" value="${employee.id}" required placeholder="*ID"/>
                     </div>
-                </div>
-                <div class="form-group">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.person.name" value="${employee.person.name}"  placeholder="Nome"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.person.cpf" value="${employee.person.cpf}"  placeholder="CPF"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="date" class="form-control" name="employee.dateOfBirth" value="${employee.dateOfBirth}"  placeholder="Data de nascimento"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="email" class="form-control" name="employee.person.contact.email" value="${employee.person.contact.email}"  placeholder="E-mail"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.person.contact.phone" value="${employee.person.contact.phone}"  placeholder="Telefone"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="number" class="form-control" name="employee.salary" value="${employee.salary}"  placeholder="Salário"/>
                     </div>
-                </div>
-                <div class="form-group">
                     <div class="col-3">
                         <select class="form-control" name="employee.function" value="${employee.function}"  form="employeeForm">
-                            <option value="*" selected="">*Cargo</option>
+                            <option value="*" selected="">Cargo</option>
                             <option value="Gerente">Gerente</option>
                             <option value="Atendente">Atendente</option> 
                             <option value="Garcon">Garçon</option> 
@@ -85,32 +79,27 @@
                         </select>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
-                        <input type="number" class="form-control" name="employee.weeklyWorkload" value="${employee.weeklyWorkload}"  placeholder="Carga horária semanal"/>
+                        <input type="number" class="form-control" name="employee.weeklyWorkload" value="${employee.weeklyWorkload}"  placeholder="Carga horária"/>
                     </div>
-                </div>
-                <div class="form-group">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.state.uf" value="${employee.address.state.uf}"  placeholder="Estado(UF)"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.city.name" value="${employee.address.city.name}"  placeholder="Cidade"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.neighborhood" value="${employee.address.neighborhood}"  placeholder="Bairro"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.street" value="${employee.address.street}"  placeholder="Rua"/>
                     </div>
-                </div>
-                <div class="form-group">
                     <div class="col-3">
                         <input type="number" class="form-control" name="employee.address.number" value="${employee.address.number}"  placeholder="Numero"/>
                     </div>
@@ -121,7 +110,6 @@
                     </div>
                 </div>
                 <div align="center">Deseja mesmo fazer isso? <input type="checkbox" required/></div>
-                <div align="center"><h5>${menssage}<h5></div>
                             <DIV ALIGN="CENTER">
                                 <button type="subimit" class="btn btn-outline-secondary">Atualizar</button>
                             </div>

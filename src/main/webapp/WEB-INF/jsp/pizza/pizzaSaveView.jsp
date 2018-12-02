@@ -37,7 +37,6 @@
         <div align="center">
             <h1>Adicionar Pizza</h1>
             <form action="${pageContext.request.contextPath}/pizza/save" method="post">
-                <div align="center">*O nome da pizza deve ser unico!</div>
                 <div class="form-group">
                     <div class="col-3">
                         <input type="text" class="form-control" name="pizza.name" value="${pizza.name}" required placeholder="Nome"/>

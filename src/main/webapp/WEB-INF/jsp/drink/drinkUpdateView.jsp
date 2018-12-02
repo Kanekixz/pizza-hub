@@ -34,22 +34,37 @@
                 </ul>
             </div>
         </nav>
-        <div>
+        <div align="center">
             <h1>Atualizar Bebida</h1>
             <form action="${pageContext.request.contextPath}/bebida/update" method="post">
-                *Informe o ID da bebida a ser atualizada!
-                <br><br>
-                <input type="number" name="drink.id" value="${drink.id}" required placeholder="Id"/><br><br>
-                <input type="text" name="drink.name" value="${drink.name}" placeholder="Nome"/><br><br>
-                <input type="text" name="drink.value" value="${drink.value}" placeholder="Valor, Ex: 600ml"/><br><br>
-                <input type="number" name="drink.price" value="${drink.price}" placeholder="Preço"/>
-                <br><br>
-                Deseja mesmo fazer isso? <input type="checkbox" required/>
-                <br><br>
-                <h5>${menssage}</h5>
-                <br><br>
-                <button type="subimit">Atualizar</button>
-            </form>
-        </div>
-    </body>
-</html>
+                <div align="center"> *Informe o ID da bebida a ser atualizada!</div>
+
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="number" class="form-control" name="drink.id" value="${drink.id}" required placeholder="Id"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="drink.name" value="${drink.name}" placeholder="Nome"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="text" class="form-control" name="drink.value" value="${drink.value}" placeholder="Valor, Ex: 600ml"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-3">
+                        <input type="number" class="form-control" name="drink.price" value="${drink.price}" placeholder="Preço"/>
+                    </div>
+                </div>
+                <div align="center">Deseja mesmo fazer isso? <input type="checkbox" required/></div>
+                <div align="center"><h5>${menssage}<h5></div>
+                            <div ALIGN="CENTER">
+                                <button type="subimit" class="btn btn-outline-secondary">Atualizar</button>
+                            </div>
+                            </form>
+                            </div>
+                            </body>
+                            </html>

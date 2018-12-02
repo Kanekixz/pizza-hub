@@ -52,14 +52,8 @@ public class PizzaController {
     @Post("save")
     public void save(Pizza pizza) throws OrmException {
         PizzaRepository pizzaRepository = new PizzaRepository();
-
-        if (pizzaRepository.findByNameExact(pizza.getName()) == null) {
-            pizzaRepository.save(pizza);
-            result.redirectTo(this).pizzaListView();
-        } else {
-            result.include("menssage", "Já existe uma pizza com esse nome!");
-            result.redirectTo(this).pizzaSaveView();
-        }
+        pizzaRepository.save(pizza);
+        result.redirectTo(this).pizzaListView();
 
     }
 
@@ -80,14 +74,7 @@ public class PizzaController {
             Pizza p = pizzaRepository.findById(pizza.getId());
 
             if (pizza.getName() != null) {
-                if(pizzaRepository.findByNameExact(pizza.getName()) != null){
-                    result.include("menssage", "Já Existe uma pizza com esse nome!");
-                    //result.redirectTo(this).pizzaUpdateView();
-                } else {
-                   p.setName(pizza.getName()); 
-                }
-                
-
+                p.setName(pizza.getName());
             }
 
             if (pizza.getFlavor() != null) {

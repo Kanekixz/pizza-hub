@@ -105,16 +105,6 @@ public class PizzaRepository {
         return pizzas;
     }
 
-    public Pizza findByNameExact(String name) {
-        EntityManager em = Factory.getFactory();
-        Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(Pizza.class);
-        criteria.add(Restrictions.ilike("name", name, MatchMode.EXACT));
-        Pizza pizza = (Pizza) criteria.uniqueResult();
-        em.close();
-        return pizza;
-    }
-
     public void remove(Integer id) throws OrmException {
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();

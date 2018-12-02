@@ -39,37 +39,33 @@
             <form action="${pageContext.request.contextPath}/funcionario/save" method="post" id="employeeForm">
                 <div align="center">Os campos com "*" são obrigatórios!</div>
                 <div align="center"><h5>${menssage}</h5></div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.person.name" value="${employee.person.name}" required placeholder="*Nome"/>
                     </div>
-                </div>
-                <div class="form-group">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.person.cpf" value="${employee.person.cpf}" required placeholder="*CPF"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="date" class="form-control" name="employee.dateOfBirth" value="${employee.dateOfBirth}" required placeholder="*Data de nascimento"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="email" class="form-control" name="employee.person.contact.email" value="${employee.person.contact.email}" required placeholder="*E-mail"/>
                     </div>
-                </div>
-                <div class="form-group">
+                    </div>
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.person.contact.phone" value="${employee.person.contact.phone}" required placeholder="*Telefone"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="number" class="form-control" name="employee.salary" value="${employee.salary}" required placeholder="*Salário"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <select class="form-control" name="employee.function" value="${employee.function}" required form="employeeForm">
                             <option value="*" selected="">*Cargo</option>
@@ -79,38 +75,34 @@
                             <option value="Entregador">Entregador</option> 
                         </select>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
-                        <input type="number" class="form-control" name="employee.weeklyWorkload" value="${employee.weeklyWorkload}" required placeholder="*Carga horária semanal"/>
+                        <input type="number" class="form-control" name="employee.weeklyWorkload" value="${employee.weeklyWorkload}" required placeholder="*Carga horária"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.state.uf" value="${employee.address.state.uf}" required placeholder="*Estado(UF)"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.city.name" value="${employee.address.city.name}" required placeholder="*Cidade"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.neighborhood" value="${employee.address.neighborhood}" required placeholder="*Bairro"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.street" value="${employee.address.street}" required placeholder="*Rua"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="row" id="rowEmployee">
                     <div class="col-3">
                         <input type="number" class="form-control" name="employee.address.number" value="${employee.address.number}" required placeholder="*Numero"/>
                     </div>
-                </div>
-                <div class="form-group">
+
                     <div class="col-3">
                         <input type="text" class="form-control" name="employee.address.complement" value="${employee.address.complement}" placeholder="Complemento"/>
                     </div>

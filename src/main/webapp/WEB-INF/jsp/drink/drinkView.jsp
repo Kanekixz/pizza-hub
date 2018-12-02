@@ -34,16 +34,16 @@
                 </ul>
             </div>
         </nav>
-        <div>
+        <div align="center">
             <h1>Gerenciar Bebidas</h1>
             <form action="${pageContext.request.contextPath}/bebida/adicionar" method="get">
-                <input type="submit" value="Adicionar Bebida"/>
+                <input type="submit" class="btn btn-outline-secondary" value="Adicionar Bebida"/>
             </form>
             <form action="${pageContext.request.contextPath}/bebida/atualizar" method="get">
-                <input type="submit" value="Atualizar Bebida"/>
+                <input type="submit" class="btn btn-outline-secondary" value="Atualizar Bebida"/>
             </form>
             <form action="${pageContext.request.contextPath}/bebida/listar" method="get">
-                <input type="submit" value="Listar Bebidas"/>
+                <input type="submit" class="btn btn-outline-secondary" value="Listar Bebidas"/>
             </form>
         </div>
 

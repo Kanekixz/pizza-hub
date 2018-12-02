@@ -108,92 +108,22 @@ public class EmployeeController {
     public void update(Employee employee) throws OrmException {
         EmployeeRepository employeeRepository = new EmployeeRepository();
 
-        /*if (employeeRepository.findById(employee.getId()) != null) {
-            Employee e = new Employee();
-            Person person = new Person();
-            Contact contact = new Contact();
-            Address address = new Address();
-            
-            if (employee.getPerson().getName() != null) {
-                person.setName(employee.getPerson().getName());
-                e.setPerson(person);
-            }
-            
-            if (employee.getPerson().getCpf() != null) {
-                person.setCpf(employee.getPerson().getCpf());
-                e.setPerson(person);
-            }
-            
-            if (employee.getDateOfBirth() != null) {
-                e.setDateOfBirth(employee.getDateOfBirth());
-            }
-            
-            if (employee.getPerson().getContact().getEmail() != null) {
-                contact.setEmail(employee.getPerson().getContact().getEmail());
-                person.setContact(contact);
-                e.setPerson(person);
-            }
-            
-            if (employee.getPerson().getContact().getPhone() != null) {
-                contact.setPhone(employee.getPerson().getContact().getPhone());
-                person.setContact(contact);
-                e.setPerson(person);
-            }
-            
-            if (employee.getSalary() != 0) {
-                e.setSalary(employee.getSalary());
-            }
-            
-            if (employee.getFunction().equals("*")) {
+        if (employeeRepository.findById(employee.getId()) != null) {
+            Employee emp = employeeRepository.findById(employee.getId());
+
+            if (employee.getFunction() != null) {
                 
-            } else {
-                e.setFunction(employee.getFunction());
-            }
-            
-            if (employee.getWeeklyWorkload() != 0) {
-                e.setWeeklyWorkload(employee.getWeeklyWorkload());
-            }
-            
-            if (employee.getAddress().getState().getUf() != null) {
-                State state = new State();
-                state.setUf(employee.getAddress().getState().getUf());
-                address.setState(state);
-                e.setAddress(address);
-            }
-            
-            if (employee.getAddress().getCity().getName() != null) {
-                City city = new City();
-                city.setName(employee.getAddress().getCity().getName());
-                address.setCity(city);
-                e.setAddress(address);
-            }
-            
-            if (employee.getAddress().getNeighborhood() != null) {
-                address.setNeighborhood(employee.getAddress().getNeighborhood());
-                e.setAddress(address);
-            }
-            
-            if (employee.getAddress().getStreet() != null) {
-                address.setStreet(employee.getAddress().getStreet());
-                e.setAddress(address);
-            }
-            
-            if (employee.getAddress().getNumber() != 0) {
-                address.setNumber(employee.getAddress().getNumber());
-                e.setAddress(address);
-            }
-            
-            if (employee.getAddress().getComplement()!= null) {
-                address.setComplement(employee.getAddress().getComplement());
-                e.setAddress(address);
-            }
-            */
-            employeeRepository.update(employee);
+                  emp.setFunction(employee.getFunction());
+                }
+                
+
+
+            employeeRepository.update(emp);
             result.redirectTo(this).employeeListView();
-        //} else {
-          //  result.include("menssage", "Não Existe um funcinário com esse id!");
-            //result.redirectTo(this).employeeUpdateView();
-        //}
+        } else {
+            result.include("menssage", "Não Existe um funcinário com esse id!");
+            result.redirectTo(this).employeeUpdateView();
+        }
 
     }
 
