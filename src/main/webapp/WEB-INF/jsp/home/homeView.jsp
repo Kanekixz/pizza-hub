@@ -59,6 +59,11 @@
                     <input type="submit" class="btn btn-outline-secondary" value="Gerenciar Vendas"/>
                 </form>        
             </div>
+            <div>
+                <form action="${pageContext.request.contextPath}/sair" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Sair"/>
+                </form>        
+            </div>
         </div>
 
     </body>
