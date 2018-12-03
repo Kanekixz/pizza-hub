@@ -39,76 +39,69 @@ public class SaleController {
     public void saleView() {
 
     }
-    
+
     @Get("listar")
     public void saleListView() {
         SaleRepository saleRepository = new SaleRepository();
         List<Sale> sales = saleRepository.listAll();
         result.include("sales", sales);
     }
-    
+
     @Get("adicionar")
     public void saleSaveView() {
         EmployeeRepository employeeRepository = new EmployeeRepository();
         List<Employee> employees = employeeRepository.listAll();
-        
+
         DrinkRepository drinkRepository = new DrinkRepository();
         List<Drink> drinks = drinkRepository.listAll();
-        
+
         PizzaRepository pizzaRepository = new PizzaRepository();
         List<Pizza> pizzas = pizzaRepository.listAll();
-        
+
         result.include("employees", employees);
         result.include("drinks", drinks);
         result.include("pizzas", pizzas);
     }
-    
+
     @Post("save")
     public void save(Sale sale) throws OrmException {
         SaleRepository saleRepository = new SaleRepository();
-        
+
         EmployeeRepository employeeRepository = new EmployeeRepository();
         Employee employee = employeeRepository.findById(sale.getEmployee().getId());
         sale.setEmployee(employee);
-        
+
         DrinkRepository drinkRepository = new DrinkRepository();
-        Drink drink0 = drinkRepository.findById(sale.getDrinks().get(0).getId());
-        Drink drink1 = drinkRepository.findById(sale.getDrinks().get(1).getId());
-        Drink drink2 = drinkRepository.findById(sale.getDrinks().get(2).getId());
         List<Drink> drinks = new ArrayList<Drink>();
-        drinks.add(drink0);
-        drinks.add(drink1);
-        drinks.add(drink2);
+        for (int i = 0; i < 3; i++) {
+
+            if (drinkRepository.findById(sale.getDrinks().get(i).getId()) != null) {
+                Drink drink = drinkRepository.findById(sale.getDrinks().get(i).getId());
+                drinks.add(drink);
+            }
+        }
         sale.setDrinks(drinks);
-        
+
         PizzaRepository pizzaRepository = new PizzaRepository();
-        Pizza pizza0 = pizzaRepository.findById(sale.getPizzas().get(0).getPizza().getId());
-        Pizza pizza1 = pizzaRepository.findById(sale.getPizzas().get(1).getPizza().getId());
-        Pizza pizza2 = pizzaRepository.findById(sale.getPizzas().get(2).getPizza().getId());
-       
-        PizzaSize pizzaSize0 = new PizzaSize();
-        pizzaSize0.setPizza(pizza0);
-        pizzaSize0.setPizzaSize(sale.getPizzas().get(0).getPizzaSize());
-        
-        PizzaSize pizzaSize1 = new PizzaSize();
-        pizzaSize1.setPizza(pizza1);
-        pizzaSize1.setPizzaSize(sale.getPizzas().get(1).getPizzaSize());
-        
-        PizzaSize pizzaSize2 = new PizzaSize();
-        pizzaSize2.setPizza(pizza2);
-        pizzaSize2.setPizzaSize(sale.getPizzas().get(2).getPizzaSize());
-        
         List<PizzaSize> pizzas = new ArrayList<PizzaSize>();
-        pizzas.add(pizzaSize0);
-        pizzas.add(pizzaSize1);
-        pizzas.add(pizzaSize2);
+        for (int i = 0; i < 3; i++) {
+            if (pizzaRepository.findById(sale.getPizzas().get(i).getPizza().getId()) != null) {
+                Pizza pizza = pizzaRepository.findById(sale.getPizzas().get(i).getPizza().getId());
+                PizzaSize pizzaSize = new PizzaSize();
+                pizzaSize.setPizza(pizza);
+                pizzaSize.setPizzaSize(sale.getPizzas().get(i).getPizzaSize());
+                
+                pizzas.add(pizzaSize);
+            }
+        }
         sale.setPizzas(pizzas);
-        
+
         saleRepository.save(sale);
+
         result.redirectTo(this).saleListView();
 
     }
-    
+
     @Post("buscar")
     public void findByName(Sale sale) throws OrmException {
         SaleRepository saleRepository = new SaleRepository();
@@ -116,7 +109,7 @@ public class SaleController {
         result.include("sales", sales);
         result.of(this).saleListView();
     }
-    
+
     @Get("remove/{id}")
     public void remove(Integer id) throws OrmException {
         Sale sale = new Sale();
@@ -125,6 +118,5 @@ public class SaleController {
         saleRepository.remove(sale.getId());
         result.redirectTo(this).saleListView();
     }
-    
-    
+
 }
