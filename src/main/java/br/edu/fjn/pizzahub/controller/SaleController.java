@@ -42,7 +42,9 @@ public class SaleController {
     
     @Get("listar")
     public void saleListView() {
-
+        SaleRepository saleRepository = new SaleRepository();
+        List<Sale> sales = saleRepository.listAll();
+        result.include("sales", sales);
     }
     
     @Get("adicionar")
@@ -105,6 +107,23 @@ public class SaleController {
         saleRepository.save(sale);
         result.redirectTo(this).saleListView();
 
+    }
+    
+    @Post("buscar")
+    public void findByName(Sale sale) throws OrmException {
+        SaleRepository saleRepository = new SaleRepository();
+        List<Sale> sales = saleRepository.findByEmployeeName(sale.getEmployee().getPerson().getName());
+        result.include("sales", sales);
+        result.of(this).saleListView();
+    }
+    
+    @Get("remove/{id}")
+    public void remove(Integer id) throws OrmException {
+        Sale sale = new Sale();
+        sale.setId(id);
+        SaleRepository saleRepository = new SaleRepository();
+        saleRepository.remove(sale.getId());
+        result.redirectTo(this).saleListView();
     }
     
     

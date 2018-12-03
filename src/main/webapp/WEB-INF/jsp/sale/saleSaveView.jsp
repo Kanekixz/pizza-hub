@@ -61,7 +61,7 @@
                         <select class="form-control" name="sale.paymentMethod" value="${sale.paymentMethod}" required form="saleForm">
                             <option value="*" selected>*Pagamento</option>
                             <option value="Dinheiro">Dinheiro</option>
-                            <option value="Cartão de Credito">Cartao de Credito</option>
+                            <option value="Cartão de Credito">Cartão de Credito</option>
                         </select>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 package br.edu.fjn.pizzahub.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -11,125 +12,105 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Sale {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Integer id;
-	
-	@JoinColumn(nullable = false)
-	@ManyToOne
-	private Employee employee;
-	
-	@JoinColumn(nullable = false)
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Client client;
-	
-	@Column(nullable = false)
-	private String paymentMethod;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private CreditCard creditCard;
-	
-	@ManyToMany
-	private List<Drink> drinks;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<PizzaSize> pizzas;
-	
-	@Column(nullable = false)
-	private double totalPrice;
-	
-	public Sale() {
-		
-	}	
-	
-	public Integer getId() {
-		return id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    @JoinColumn(nullable = false)
+    @ManyToOne
+    private Employee employee;
 
-	public Employee getEmployee() {
-		return employee;
-	}
+    @JoinColumn(nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Client client;
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+    @Column(nullable = false)
+    private String paymentMethod;
 
-	public Client getClient() {
-		return client;
-	}
+    @ManyToOne(cascade = CascadeType.ALL)
+    private CreditCard creditCard;
 
-	public void setClient(Client client) {
-		this.client = client;
-	}
+    @ManyToMany
+    private List<Drink> drinks;
 
-	public String getPaymentMethod() {
-		return paymentMethod;
-	}
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<PizzaSize> pizzas;
 
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
+    @Column(nullable = false)
+    private double totalPrice;
 
-	public CreditCard getCreditCard() {
-		return creditCard;
-	}
+    public Sale() {
 
-	public void setCreditCard(CreditCard creditCard) {
-		this.creditCard = creditCard;
-	}
+    }
 
-	public List<Drink> getDrinks() {
-		return drinks;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setDrinks(List<Drink> drinks) {
-		this.drinks = drinks;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public List<PizzaSize> getPizzas() {
-		return pizzas;
-	}
+    public Employee getEmployee() {
+        return employee;
+    }
 
-	public void setPizzas(List<PizzaSize> pizzas) {
-		this.pizzas = pizzas;
-	}
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 
-	public double getTotalPrice() {
-		return totalPrice;
-	}
+    public Client getClient() {
+        return client;
+    }
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
 
-	
-	
-	
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 
-	
-	
+    public CreditCard getCreditCard() {
+        return creditCard;
+    }
 
-	
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
+    }
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    public List<Drink> getDrinks() {
+        return drinks;
+    }
+
+    public void setDrinks(List<Drink> drinks) {
+        this.drinks = drinks;
+    }
+
+    public List<PizzaSize> getPizzas() {
+        return pizzas;
+    }
+
+    public void setPizzas(List<PizzaSize> pizzas) {
+        this.pizzas = pizzas;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
 }
