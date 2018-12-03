@@ -51,10 +51,13 @@
                     <form action="${pageContext.request.contextPath}/funcionario/buscar" method="post">
                         <div class="form-group">
                             <div class="row justify-content-md-center">
-                                <div class="col-3">
-                                    <input type="text" class="form-control" required placeholder="Buscar nome" name="employee.person.name" value="${employee.person.name}"/>
+                                <div class="col-2">
+                                    <input type="text" class="form-control" placeholder="Nome" name="employee.person.name" value="${employee.person.name}" required/>
                                 </div>
-                                <div class="col-0">
+                                <div class="col-2">
+                                    <input type="text" class="form-control" placeholder="Cargo" name="employee.function" value="${employee.function}" required/>
+                                </div>
+                                <div class="col-1">
                                     <input id="btnList" type="submit" class="btn btn-outline-secondary" value="Buscar"/>
                                 </div>
                             </div>

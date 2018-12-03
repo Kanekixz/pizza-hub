@@ -70,10 +70,10 @@
                         <td>${sale.client.person.cpf}</td>
                         <td>${sale.paymentMethod}</td>
                         <td>${sale.creditCard.number}</td>
-                        <!--
-                        <td>{sale.drinks[0].name}</td>
-                        <td>{sale.pizzas[0].pizza.name}</td>
-                        -->
+                        
+                        <td>error<!--{sale.drinks[0].name}--></td>
+                        <td>error<!--{sale.pizzas[0].pizza.name}--></td>
+                        
                         <td>${sale.totalPrice}</td>
                         <td>
                             <a href="${pageContext.request.contextPath}/venda/remove/${sale.id}">Remover</a>

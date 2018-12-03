@@ -10,12 +10,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.edu.fjn.pizzahub.model.Address;
-import br.edu.fjn.pizzahub.model.City;
-import br.edu.fjn.pizzahub.model.Contact;
 import br.edu.fjn.pizzahub.model.Employee;
-import br.edu.fjn.pizzahub.model.Person;
-import br.edu.fjn.pizzahub.model.State;
 import br.edu.fjn.pizzahub.persistence.EmployeeRepository;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import java.util.List;
@@ -39,11 +34,6 @@ public class EmployeeController {
 
     @Get("adicionar")
     public void employeeSaveView() {
-
-    }
-
-    @Get("atualizar")
-    public void employeeUpdateView() {
 
     }
 
@@ -97,9 +87,9 @@ public class EmployeeController {
     }
     
     @Post("buscar")
-    public void findByName(Employee employee) throws OrmException {
+    public void find(Employee employee) throws OrmException {
         EmployeeRepository employeeRepository = new EmployeeRepository();
-        List<Employee> employees = employeeRepository.findByName(employee.getPerson().getName());
+        List<Employee> employees = employeeRepository.findByNameAndFunction(employee.getPerson().getName(), employee.getFunction());
         result.include("employees", employees);
         result.of(this).employeeListView();
     }

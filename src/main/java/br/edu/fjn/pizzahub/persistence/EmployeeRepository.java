@@ -12,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import br.edu.fjn.pizzahub.persistence.util.Factory;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import br.edu.fjn.pizzahub.model.Employee;
+import org.hibernate.criterion.Criterion;
 
 public class EmployeeRepository {
 
@@ -205,6 +206,19 @@ public class EmployeeRepository {
         Criteria criteria = session.createCriteria(Employee.class);
         criteria.createAlias("address", "a");
         criteria.add(Restrictions.eq("a.number", number));
+        List<Employee> employees = criteria.list();
+        em.close();
+        return employees;
+    }
+    
+    public List<Employee> findByNameAndFunction(String name, String function) {
+        EntityManager em = Factory.getFactory();
+        Session session = (Session) em.getDelegate();
+        Criteria criteria = session.createCriteria(Employee.class);
+        criteria.createAlias("person", "p");
+        Criterion c1 = Restrictions.ilike("p.name", name, MatchMode.ANYWHERE);
+        Criterion c2 = Restrictions.ilike("function", function, MatchMode.ANYWHERE);
+        criteria.add(Restrictions.and(c1, c2));
         List<Employee> employees = criteria.list();
         em.close();
         return employees;
