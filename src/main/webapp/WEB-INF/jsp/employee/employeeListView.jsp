@@ -26,9 +26,6 @@
                         <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario/adicionar">Novo Funcionário</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario/atualizar">Atualizar Funcionário</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario/listar">Lista de Funcionários</a>
                     </li>
                 </ul>

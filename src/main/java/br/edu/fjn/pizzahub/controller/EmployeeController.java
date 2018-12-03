@@ -104,27 +104,6 @@ public class EmployeeController {
         result.of(this).employeeListView();
     }
     
-    @Post("update")
-    public void update(Employee employee) throws OrmException {
-        EmployeeRepository employeeRepository = new EmployeeRepository();
-
-        if (employeeRepository.findById(employee.getId()) != null) {
-            Employee emp = employeeRepository.findById(employee.getId());
-
-            if (employee.getFunction() != null) {
-                
-                  emp.setFunction(employee.getFunction());
-                }
-                
-
-
-            employeeRepository.update(emp);
-            result.redirectTo(this).employeeListView();
-        } else {
-            result.include("menssage", "Não Existe um funcinário com esse id!");
-            result.redirectTo(this).employeeUpdateView();
-        }
-
-    }
+    
 
 }

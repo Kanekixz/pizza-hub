@@ -26,9 +26,6 @@
                         <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario/adicionar">Novo Funcionário</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario/atualizar">Atualizar Funcionário</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario/listar">Lista de Funcionários</a>
                     </li>
                 </ul>
@@ -41,12 +38,6 @@
                 <form action="${pageContext.request.contextPath}/funcionario/adicionar" method="get">
                     <input type="submit" class="btn btn-outline-secondary" value="Adicionar Funcionário"/>
                 </form>
-            
-            
-                <form action="${pageContext.request.contextPath}/funcionario/atualizar" method="get">
-                    <input type="submit" class="btn btn-outline-secondary" value="Atualizar Funcionário"/>
-                </form>
-            
             
                 <form action="${pageContext.request.contextPath}/funcionario/listar" method="get">
                     <input type="submit" class="btn btn-outline-secondary" value="Listar Funcionários"/>

@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="${pageContext.request.contextPath}/funcionario">Funcionários</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="${pageContext.request.contextPath}/venda">Vendas</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -49,6 +52,11 @@
             <div>
                 <form action="${pageContext.request.contextPath}/funcionario" method="get">
                     <input type="submit" class="btn btn-outline-secondary" value="Gerenciar Funcionários"/>
+                </form>        
+            </div>
+            <div>
+                <form action="${pageContext.request.contextPath}/venda" method="get">
+                    <input type="submit" class="btn btn-outline-secondary" value="Gerenciar Vendas"/>
                 </form>        
             </div>
         </div>

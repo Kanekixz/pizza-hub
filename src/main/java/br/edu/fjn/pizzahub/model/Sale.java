@@ -42,8 +42,6 @@ public class Sale {
 	@Column(nullable = false)
 	private double totalPrice;
 	
-	private String note;
-	
 	public Sale() {
 		
 	}	
@@ -112,13 +110,6 @@ public class Sale {
 		this.totalPrice = totalPrice;
 	}
 
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
 
 	
 	

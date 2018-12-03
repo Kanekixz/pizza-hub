@@ -69,7 +69,7 @@ public class SaleRepository {
     public void remove(Integer id) throws OrmException {
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();
-        Sale sale = findById(id);
+        Sale sale = em.find(Sale.class, id);
 
         try {
 

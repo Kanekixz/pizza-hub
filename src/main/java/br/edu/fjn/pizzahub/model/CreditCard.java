@@ -12,16 +12,12 @@ public class CreditCard {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	@Column(nullable = false, unique = true, length = 20)
+	@Column(nullable = false)
 	private String number;
-	@Column(nullable = false, length = 3)
+	@Column(nullable = false)
 	private String cvv;
-	@Column(nullable = false, length = 7)
+	@Column(nullable = false)
 	private String expirationDate;
-	@Column(nullable = false)
-	private String ownerName;
-	@Column(nullable = false)
-	private String flag;
 
 	public CreditCard() {
 		
@@ -57,22 +53,6 @@ public class CreditCard {
 
 	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
-	}
-
-	public String getOwnerName() {
-		return ownerName;
-	}
-
-	public void setOwnerName(String ownerName) {
-		this.ownerName = ownerName;
-	}
-
-	public String getFlag() {
-		return flag;
-	}
-
-	public void setFlag(String flag) {
-		this.flag = flag;
 	}
 
 	
