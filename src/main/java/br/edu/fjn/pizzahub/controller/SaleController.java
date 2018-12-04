@@ -17,6 +17,7 @@ import br.edu.fjn.pizzahub.model.PizzaSize;
 import br.edu.fjn.pizzahub.model.Sale;
 import br.edu.fjn.pizzahub.persistence.DrinkRepository;
 import br.edu.fjn.pizzahub.persistence.EmployeeRepository;
+import br.edu.fjn.pizzahub.persistence.PersonRepository;
 import br.edu.fjn.pizzahub.persistence.PizzaRepository;
 import br.edu.fjn.pizzahub.persistence.SaleRepository;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
@@ -66,39 +67,56 @@ public class SaleController {
     @Post("save")
     public void save(Sale sale) throws OrmException {
         SaleRepository saleRepository = new SaleRepository();
-
         EmployeeRepository employeeRepository = new EmployeeRepository();
-        Employee employee = employeeRepository.findById(sale.getEmployee().getId());
-        sale.setEmployee(employee);
 
-        DrinkRepository drinkRepository = new DrinkRepository();
-        List<Drink> drinks = new ArrayList<Drink>();
-        for (int i = 0; i < 3; i++) {
+        if (sale.getPaymentMethod().equals("*")) {
+            result.include("menssage", "Selecione um pagamento válido!");
+            result.redirectTo(this).saleSaveView();
+        } else {
+            if (employeeRepository.findById(sale.getEmployee().getId()) == null) {
+                result.include("menssage", "Selecione um funcinário válido!");
+                result.redirectTo(this).saleSaveView();
+            } else {
+                Employee employee = employeeRepository.findById(sale.getEmployee().getId());
+                sale.setEmployee(employee);
 
-            if (drinkRepository.findById(sale.getDrinks().get(i).getId()) != null) {
-                Drink drink = drinkRepository.findById(sale.getDrinks().get(i).getId());
-                drinks.add(drink);
+                PersonRepository personRepository = new PersonRepository();
+
+                if (personRepository.findByCpf(sale.getClient().getPerson().getCpf()) != null) {
+                    result.include("menssage", "Já existe um cliente com esse cpf!");
+                    result.redirectTo(this).saleSaveView();
+                } else {
+                    DrinkRepository drinkRepository = new DrinkRepository();
+                    List<Drink> drinks = new ArrayList<Drink>();
+                    for (int i = 0; i < sale.getDrinks().size(); i++) {
+
+                        if (drinkRepository.findById(sale.getDrinks().get(i).getId()) != null) {
+                            Drink drink = drinkRepository.findById(sale.getDrinks().get(i).getId());
+                            drinks.add(drink);
+                        }
+                    }
+                    sale.setDrinks(drinks);
+
+                    PizzaRepository pizzaRepository = new PizzaRepository();
+                    List<PizzaSize> pizzas = new ArrayList<PizzaSize>();
+                    for (int i = 0; i < sale.getPizzas().size(); i++) {
+                        if (pizzaRepository.findById(sale.getPizzas().get(i).getPizza().getId()) != null) {
+                            Pizza pizza = pizzaRepository.findById(sale.getPizzas().get(i).getPizza().getId());
+                            PizzaSize pizzaSize = new PizzaSize();
+                            pizzaSize.setPizza(pizza);
+                            pizzaSize.setPizzaSize(sale.getPizzas().get(i).getPizzaSize());
+
+                            pizzas.add(pizzaSize);
+                        }
+                    }
+                    sale.setPizzas(pizzas);
+
+                    saleRepository.save(sale);
+                    result.redirectTo(this).saleListView();
+                }
+
             }
         }
-        sale.setDrinks(drinks);
-
-        PizzaRepository pizzaRepository = new PizzaRepository();
-        List<PizzaSize> pizzas = new ArrayList<PizzaSize>();
-        for (int i = 0; i < 3; i++) {
-            if (pizzaRepository.findById(sale.getPizzas().get(i).getPizza().getId()) != null) {
-                Pizza pizza = pizzaRepository.findById(sale.getPizzas().get(i).getPizza().getId());
-                PizzaSize pizzaSize = new PizzaSize();
-                pizzaSize.setPizza(pizza);
-                pizzaSize.setPizzaSize(sale.getPizzas().get(i).getPizzaSize());
-                
-                pizzas.add(pizzaSize);
-            }
-        }
-        sale.setPizzas(pizzas);
-
-        saleRepository.save(sale);
-
-        result.redirectTo(this).saleListView();
 
     }
 

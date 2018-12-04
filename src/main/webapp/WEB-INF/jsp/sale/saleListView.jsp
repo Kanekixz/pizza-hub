@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Lista de Pizzas</title>
+        <title>Lista de Vendas</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg">

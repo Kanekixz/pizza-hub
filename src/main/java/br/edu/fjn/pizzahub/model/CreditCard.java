@@ -12,11 +12,8 @@ public class CreditCard {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
-	@Column(nullable = false)
 	private String number;
-	@Column(nullable = false)
 	private String cvv;
-	@Column(nullable = false)
 	private String expirationDate;
 
 	public CreditCard() {
