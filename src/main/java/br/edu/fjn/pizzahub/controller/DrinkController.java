@@ -87,10 +87,8 @@ public class DrinkController {
 
     @Get("remove/{id}")
     public void remove(Integer id) throws OrmException {
-        Drink drink = new Drink();
-        drink.setId(id);
         DrinkRepository drinkRepository = new DrinkRepository();
-        drinkRepository.remove(drink.getId());
+        drinkRepository.remove(id);
         result.redirectTo(this).drinkListView();
     }
 

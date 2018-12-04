@@ -130,10 +130,8 @@ public class SaleController {
 
     @Get("remove/{id}")
     public void remove(Integer id) throws OrmException {
-        Sale sale = new Sale();
-        sale.setId(id);
         SaleRepository saleRepository = new SaleRepository();
-        saleRepository.remove(sale.getId());
+        saleRepository.remove(id);
         result.redirectTo(this).saleListView();
     }
 

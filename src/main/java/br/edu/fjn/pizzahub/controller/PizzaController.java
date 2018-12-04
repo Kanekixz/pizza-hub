@@ -59,10 +59,8 @@ public class PizzaController {
 
     @Get("remove/{id}")
     public void remove(Integer id) throws OrmException {
-        Pizza pizza = new Pizza();
-        pizza.setId(id);
         PizzaRepository pizzaRepository = new PizzaRepository();
-        pizzaRepository.remove(pizza.getId());
+        pizzaRepository.remove(id);
         result.redirectTo(this).pizzaListView();
     }
 

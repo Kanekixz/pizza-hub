@@ -81,10 +81,8 @@ public class EmployeeController {
     
     @Get("remove/{id}")
     public void remove(Integer id) throws OrmException {
-        Employee employee = new Employee();
-        employee.setId(id);
         EmployeeRepository employeeRepository = new EmployeeRepository();
-        employeeRepository.remove(employee.getId());
+        employeeRepository.remove(id);
         result.redirectTo(this).employeeListView();
     }
     
