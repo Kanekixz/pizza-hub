@@ -108,26 +108,5 @@ public class DrinkRepository {
         return drinks;
     }
 
-    public List<Drink> findByValue(String value) {
-        EntityManager em = Factory.getFactory();
-        Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(Drink.class);
-        criteria.add(Restrictions.ilike("value", value, MatchMode.ANYWHERE));
-        List<Drink> drinks = criteria.list();
-        em.close();
-        return drinks;
-    }
-
-    public Drink findByNameAndValue(String name, String value) {
-        EntityManager em = Factory.getFactory();
-        Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(Drink.class);
-        Criterion c1 = Restrictions.ilike("name", name, MatchMode.EXACT);
-        Criterion c2 = Restrictions.ilike("value", value, MatchMode.ANYWHERE);
-        criteria.add(Restrictions.and(c1, c2));
-        Drink drink = (Drink) criteria.uniqueResult();
-        em.close();
-        return drink;
-    }
 
 }

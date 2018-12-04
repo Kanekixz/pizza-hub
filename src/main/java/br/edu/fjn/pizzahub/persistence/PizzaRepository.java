@@ -85,26 +85,6 @@ public class PizzaRepository {
         return pizzas;
     }
 
-    public List<Pizza> findByFlavor(String flavor) {
-        EntityManager em = Factory.getFactory();
-        Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(Pizza.class);
-        criteria.add(Restrictions.ilike("flavor", flavor, MatchMode.ANYWHERE));
-        List<Pizza> pizzas = criteria.list();
-        em.close();
-        return pizzas;
-    }
-
-    public List<Pizza> findByIngredient(String ingredient) {
-        EntityManager em = Factory.getFactory();
-        Session session = (Session) em.getDelegate();
-        Criteria criteria = session.createCriteria(Pizza.class);
-        criteria.add(Restrictions.ilike("ingredients", ingredient, MatchMode.ANYWHERE));
-        List<Pizza> pizzas = criteria.list();
-        em.close();
-        return pizzas;
-    }
-
     public void remove(Integer id) throws OrmException {
         EntityManager em = Factory.getFactory();
         em.getTransaction().begin();

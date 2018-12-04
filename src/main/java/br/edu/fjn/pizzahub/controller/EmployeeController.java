@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.edu.fjn.pizzahub.model.Employee;
 import br.edu.fjn.pizzahub.persistence.EmployeeRepository;
+import br.edu.fjn.pizzahub.persistence.PersonRepository;
 import br.edu.fjn.pizzahub.persistence.util.OrmException;
 import java.util.List;
 import javax.inject.Inject;
@@ -47,12 +48,13 @@ public class EmployeeController {
     @Post("save")
     public void save(Employee employee) throws OrmException {
         EmployeeRepository employeeRepository = new EmployeeRepository();
+        PersonRepository personRepository = new PersonRepository();
 
         if (employee.getFunction().equals("*")) {
             result.include("menssage", "Selecione um cargo válido!");
             result.redirectTo(this).employeeSaveView();
         } else {
-            if (employeeRepository.findByCpf(employee.getPerson().getCpf()) == null) {
+            if (personRepository.findByCpf(employee.getPerson().getCpf()) == null) {
 
                 if (employeeRepository.findByEmail(employee.getPerson().getContact().getEmail()) == null) {
 
