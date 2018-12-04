@@ -70,10 +70,17 @@
                         <td>${sale.client.person.cpf}</td>
                         <td>${sale.paymentMethod}</td>
                         <td>${sale.creditCard.number}</td>
-                        
-                        <td>error<!--{sale.drinks[0].name}--></td>
-                        <td>error<!--{sale.pizzas[0].pizza.name}--></td>
-                        
+                        <td>
+                            <c:forEach items="${sale.drinks}" var="drink">
+                                ${drink.name}, ${drink.value}<br>
+                            </c:forEach>
+                            
+                        </td>
+                        <td>
+                            <c:forEach items="${sale.pizzas}" var="pizzaSize">
+                                ${pizzaSize.pizza.name}, ${pizzaSize.pizzaSize}<br>
+                            </c:forEach>
+                        </td>
                         <td>${sale.totalPrice}</td>
                         <td>
                             <a href="${pageContext.request.contextPath}/venda/remove/${sale.id}">Remover</a>
