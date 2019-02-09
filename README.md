@@ -5,7 +5,7 @@ Pizza Hub application developed with Vraptor, Jstl, Hibernate, JPA, Postgres and
 
 2 - Configure password of postgres in persistence.xml
 
-3 - Use Apache Tomcat for run application on netbeans 8.2+ or Eclipse Java EE(Other server can be used too)
+3 - Use Apache Tomcat(Other server can be used too) for run application on netbeans 8.2+ or Eclipse Java EE
 
 4 - run application
 
